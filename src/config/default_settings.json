@@ -1,0 +1,15 @@
+{
+    "overlay_opacity": 15,
+    "grid_color": "#FFFFFF",
+    "active_cell_color": "#FFA500",
+    "preview_color": "#00FF00",
+    "suggestion_color": "#4CAF50",
+    "fab_size": 56,
+    "grid_cols": 6,
+    "grid_rows": 4,
+    "marker_size": 8,
+    "snap_enabled": true,
+    "snap_threshold": 15,
+    "animation_duration": 300,
+    "preview_duration": 200
+}
