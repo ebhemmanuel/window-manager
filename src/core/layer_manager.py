@@ -40,12 +40,18 @@ class LayerManager(QObject):
         monitor_info = get_monitor_info()
         
         for monitor_id, info in monitor_info.items():
+            # Calculate if the monitor is ultrawide based on aspect ratio
+            width = info['work_area'].width()
+            height = info['work_area'].height()
+            is_ultrawide = (width / height) > 2.0 if height > 0 else False
+            
+            # Create MonitorInfo without aspect_ratio parameter
             self.monitors[monitor_id] = MonitorInfo(
                 id=monitor_id,
                 name=info['device'].split('\\')[-1],
                 work_area=info['work_area'],
                 is_primary=info['is_primary'],
-                aspect_ratio=info['work_area'].width() / info['work_area'].height()
+                is_ultrawide=is_ultrawide
             )
     
     def load_layers(self):
@@ -358,6 +364,28 @@ class LayerManager(QObject):
             return self.layers[layer_name].grid_config
         return self._create_default_grid_config(self.monitors[monitor_id])
     
+    def get_active_monitor(self) -> Optional[str]:
+        """Retrieve the ID of the currently active monitor."""
+        # Check if there is a single primary monitor
+        for monitor_id, monitor in self.monitors.items():
+            if monitor.is_primary:
+                return monitor_id
+
+        # Fallback to any monitor if no primary is set
+        if self.monitors:
+            return list(self.monitors.keys())[0]
+
+        # Return None if no monitors are available
+        return None
+
+    def get_monitor_layers(self, monitor_id: str) -> List[str]:
+        """Retrieve all layers associated with a specific monitor ID."""
+        if monitor_id not in self.monitors:
+            raise ValueError(f"Monitor ID {monitor_id} not found.")
+        
+        # Return a list of layer names associated with the monitor ID
+        return [layer.name for layer in self.layers.values() if layer.monitor_id == monitor_id]
+
     def _get_current_windows(self, monitor_id: str) -> List[WindowInfo]:
         """Get all windows currently on a monitor."""
         monitor = self.monitors[monitor_id]

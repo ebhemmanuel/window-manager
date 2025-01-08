@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect
-from PyQt5.QtCore import Qt, QPoint, QPropertyAnimation, QEasingCurve, pyqtSignal, QSize
-from PyQt5.QtGui import QPainter, QPainterPath, QColor, QPen, QApplication
+from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect, QApplication
+from PyQt5.QtCore import QRectF, Qt, QPoint, QPropertyAnimation, QEasingCurve, pyqtSignal, QSize
+from PyQt5.QtGui import QPainter, QPainterPath, QColor, QPen
 
 class FloatingActionButton(QWidget):
     """Material Design-style floating action button."""
@@ -45,7 +45,7 @@ class FloatingActionButton(QWidget):
         # Draw circular background
         path = QPainterPath()
         rect = self.rect().adjusted(4, 4, -4, -4)  # Add padding
-        path.addEllipse(rect)
+        path.addEllipse(QRectF(rect))  # Convert QRect to QRectF
         
         # Determine background color based on state
         if self.is_pressed:
@@ -66,8 +66,8 @@ class FloatingActionButton(QWidget):
         dot_spacing = icon_size / 2
         for i in range(3):
             for j in range(3):
-                x = center.x() - icon_size/2 + i * dot_spacing
-                y = center.y() - icon_size/2 + j * dot_spacing
+                x = center.x() - icon_size / 2 + i * dot_spacing
+                y = center.y() - icon_size / 2 + j * dot_spacing
                 painter.drawPoint(int(x), int(y))
     
     def enterEvent(self, event):
@@ -110,16 +110,13 @@ class FloatingActionButton(QWidget):
             
             # Keep button within screen bounds
             screen = QApplication.primaryScreen().geometry()
-            new_pos.setX(max(0, min(new_pos.x(), 
-                                  screen.width() - self.width())))
-            new_pos.setY(max(0, min(new_pos.y(), 
-                                  screen.height() - self.height())))
+            new_pos.setX(max(0, min(new_pos.x(), screen.width() - self.width())))
+            new_pos.setY(max(0, min(new_pos.y(), screen.height() - self.height())))
             
             self.move(new_pos)
             self.drag_start = event.globalPos()
     
-    def set_colors(self, base: str = None, hover: str = None, 
-                  press: str = None, icon: str = None):
+    def set_colors(self, base: str = None, hover: str = None, press: str = None, icon: str = None):
         """Update button colors."""
         if base:
             self.base_color = QColor(base)
