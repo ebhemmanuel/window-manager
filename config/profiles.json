@@ -1,0 +1,91 @@
+{
+  "profiles": [
+    {
+      "name": "Default",
+      "monitors": {
+        "DISPLAY1": {
+          "id": "DISPLAY1",
+          "name": "Display 1",
+          "work_area": [
+            0,
+            0,
+            3840,
+            2160
+          ],
+          "is_primary": 1,
+          "is_ultrawide": false,
+          "grid": {
+            "columns": 6,
+            "rows": 4,
+            "subdivisions": false,
+            "ultrawide_zones": [
+              [
+                0.0,
+                0.5
+              ],
+              [
+                0.5,
+                1.0
+              ]
+            ]
+          }
+        },
+        "DISPLAY2": {
+          "id": "DISPLAY2",
+          "name": "Display 2",
+          "work_area": [
+            0,
+            0,
+            3840,
+            2160
+          ],
+          "is_primary": 1,
+          "is_ultrawide": false,
+          "grid": {
+            "columns": 6,
+            "rows": 4,
+            "subdivisions": false,
+            "ultrawide_zones": [
+              [
+                0.0,
+                0.5
+              ],
+              [
+                0.5,
+                1.0
+              ]
+            ]
+          }
+        },
+        "DISPLAY3": {
+          "id": "DISPLAY3",
+          "name": "Display 3",
+          "work_area": [
+            0,
+            0,
+            3840,
+            2160
+          ],
+          "is_primary": 1,
+          "is_ultrawide": false,
+          "grid": {
+            "columns": 6,
+            "rows": 4,
+            "subdivisions": false,
+            "ultrawide_zones": [
+              [
+                0.0,
+                0.5
+              ],
+              [
+                0.5,
+                1.0
+              ]
+            ]
+          }
+        }
+      },
+      "is_active": true
+    }
+  ]
+}

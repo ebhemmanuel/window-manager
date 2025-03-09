@@ -1,0 +1,69 @@
+{
+  "active_layers": {
+    "DISPLAY1": "Default-DISPLAY1",
+    "DISPLAY2": "Default-DISPLAY2",
+    "DISPLAY3": "Default-DISPLAY3"
+  },
+  "layers": [
+    {
+      "name": "Default-DISPLAY1",
+      "monitor_id": "DISPLAY1",
+      "windows": [],
+      "grid_config": {
+        "columns": 6,
+        "rows": 4,
+        "subdivisions": false,
+        "zones": [
+          [
+            0.0,
+            0.5
+          ],
+          [
+            0.5,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Default-DISPLAY2",
+      "monitor_id": "DISPLAY2",
+      "windows": [],
+      "grid_config": {
+        "columns": 6,
+        "rows": 4,
+        "subdivisions": false,
+        "zones": [
+          [
+            0.0,
+            0.5
+          ],
+          [
+            0.5,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Default-DISPLAY3",
+      "monitor_id": "DISPLAY3",
+      "windows": [],
+      "grid_config": {
+        "columns": 6,
+        "rows": 4,
+        "subdivisions": false,
+        "zones": [
+          [
+            0.0,
+            0.5
+          ],
+          [
+            0.5,
+            1.0
+          ]
+        ]
+      }
+    }
+  ]
+}
